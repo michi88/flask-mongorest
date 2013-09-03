@@ -148,7 +148,8 @@ class RestrictedPostView(ResourceView):
     def has_delete_permission(self, request, obj):
         return not obj.is_published
 
-from flask.ext.wtf import TextField, length
+from wtforms import TextField
+from wtforms.validators import length
 class TestDocument(db.Document):
     name = db.StringField()
     other = db.StringField()
