@@ -30,3 +30,22 @@ pip-log.txt
 docs/_build
 
 venv
+
+###IntelliJ###
+
+*.iml
+*.ipr
+*.iws
+.idea/
+
+###vim###
+
+.*.sw[a-z]
+*.un~
+Session.vim
+
+###SublimeText###
+
+/*.sublime-project
+*.sublime-workspace
+sftp-config*.json
