@@ -150,7 +150,9 @@ class Resource(object):
             else:
                 field_value = getattr(obj, field_name)
 
-            if isinstance(field_instance, (ReferenceField, EmbeddedDocumentField)):
+            if isinstance(field_instance, EmbeddedDocumentField):
+                return field_value and field_value.to_mongo()
+            elif isinstance(field_instance, ReferenceField):
                 if field_name in self._related_resources:
                     return field_value and not isinstance(field_value, DBRef) and self._related_resources[field_name]().serialize_field(field_value, **kwargs)
                 else:
