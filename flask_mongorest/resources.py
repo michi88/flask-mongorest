@@ -428,7 +428,7 @@ class Resource(object):
             field = self._reverse_rename_fields.get(field, field)
             qs = operator().apply(qs, field, value, negate)
         limit = None
-        if self.allowed_ordering and params.get('_order_by') in self.allowed_ordering:
+        if self.allowed_ordering and params.get('_order_by', '').strip('-') in self.allowed_ordering:
             qs = qs.order_by(*params['_order_by'].split(','))
 
         if not custom_qs and not all:
